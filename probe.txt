@@ -1,4 +1,0 @@
-codeforces contest.list: 200
-anilist graphql POST: 401
-wikipedia Special:Random: 200
-WebSearch public holidays Egypt 2027: returned results
