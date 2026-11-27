@@ -1,4 +1,4 @@
-codeforces contest.list: no response, curl: (56) CONNECT tunnel failed, response 403
-anilist graphql POST: no response, curl: (56) CONNECT tunnel failed, response 403
-wikipedia Special:Random: no response, curl: (56) CONNECT tunnel failed, response 403
+codeforces contest.list: 200
+anilist graphql POST: 401
+wikipedia Special:Random: 200
 WebSearch public holidays Egypt 2027: returned results
