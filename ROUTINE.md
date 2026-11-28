@@ -41,7 +41,7 @@ fix something that looks wrong.
 5. **Validate.** If you can download the validator, do so and fix every `ERROR`
    line before committing:
    ```sh
-   curl -fsSL -o /tmp/syncer https://github.com/Triplem5ds/super-duper-calendar/releases/download/v0.1.0/syncer-linux-amd64
+   curl -fsSL -o /tmp/syncer https://github.com/Triplem5ds/super-duper-calendar/releases/download/v0.2.0/syncer-linux-amd64
    chmod +x /tmp/syncer && /tmp/syncer validate -data . -prev ../prev
    ```
    If the download fails, skip this step and say so in the commit message. The
