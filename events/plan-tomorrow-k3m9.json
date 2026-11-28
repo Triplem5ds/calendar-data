@@ -1,0 +1,15 @@
+[
+  {
+    "id": "plan-tomorrow-k3m9:daily-plan",
+    "job_id": "plan-tomorrow-k3m9",
+    "title": "Plan tomorrow",
+    "start": "2026-11-28T21:00:00+02:00",
+    "end": "2026-11-28T21:15:00+02:00",
+    "all_day": false,
+    "rrule": "FREQ=DAILY",
+    "tz": "Africa/Cairo",
+    "reminders": [0],
+    "url": "",
+    "notes": "Take a few minutes to plan tomorrow."
+  }
+]
