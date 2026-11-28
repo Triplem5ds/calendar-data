@@ -24,8 +24,8 @@ fix something that looks wrong.
 ## Every run
 
 1. **Sync.** Make sure the working copy is on `main` and up to date
-   (`git fetch origin && git checkout main && git reset --hard origin/main`).
-   Record the starting state: `git worktree add ../prev HEAD`.
+   (`git fetch origin && git checkout main && git merge --ff-only origin/main`).
+   A fresh checkout always fast-forwards; if it doesn't, stop and report why.
 2. **Reconcile jobs.** Compare `requests/` with `jobs/`:
    - a request with no job file → **new**: interpret it (see "Interpreting");
    - a request whose `sha256sum` differs from the job's `request_hash` →
@@ -38,14 +38,11 @@ fix something that looks wrong.
    "Job file") and doesn't stop the others.
 4. **Write events** following "Events" below, and update `last_run` and
    `last_error` on every job you ran.
-5. **Validate.** If you can download the validator, do so and fix every `ERROR`
-   line before committing:
-   ```sh
-   curl -fsSL -o /tmp/syncer https://github.com/Triplem5ds/super-duper-calendar/releases/download/v0.2.0/syncer-linux-amd64
-   chmod +x /tmp/syncer && /tmp/syncer validate -data . -prev ../prev
-   ```
-   If the download fails, skip this step and say so in the commit message. The
-   mirror runs the same validation before syncing.
+5. **Check your files.** Don't download or run any program to validate them;
+   the mirror validates every push and refuses to sync data with errors. Before
+   committing, re-read each file you wrote against "Job file" and "Events": every
+   `events/*.json` is a JSON array, every event has all the fields shown, and no
+   ID you kept has changed.
 6. **Commit once and push.** If nothing changed, don't commit. Otherwise
    commit with a one-line summary, then: `git fetch origin && git rebase
    origin/main && git push origin main`. If the push is rejected, repeat
