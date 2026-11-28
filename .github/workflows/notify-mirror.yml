@@ -1,0 +1,24 @@
+# Starts the mirror run in the separate mirror repo on every push to main.
+#
+# Secret (this repo): CALTOKEN, a fine-grained token limited to
+# the mirror repo with only "Actions: read and write". The routine can push to
+# this repo, so treat this token as exposed to it: all it allows is starting or
+# cancelling mirror runs, which always run the mirror repo's own code.
+name: notify-mirror
+
+on:
+  push:
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Start the mirror run
+        env:
+          GH_TOKEN: ${{ secrets.CALTOKEN }}
+          MIRROR_REPO: Triplem5ds/calendar-mirror
+        run: gh workflow run mirror.yml -R "$MIRROR_REPO" --ref main
